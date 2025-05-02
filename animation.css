@@ -1,0 +1,42 @@
+:root{
+  --cpromotext: var(--co1);
+  --cglow: var(--cg0);
+  --gunit: 0.2px;
+}
+
+.promo{
+    color: var(--cpromotext);
+    text-shadow:
+      0 0 calc(var(--gunit)) var(--cpromotext),
+      0 0 calc(var(--gunit) * 2) var(--cpromotext),
+      0 0 calc(var(--gunit) * 3) var(--cglow),
+      0 0 calc(var(--gunit) * 4) var(--cglow),
+      0 0 calc(var(--gunit) * 5) var(--cglow),
+      0 0 calc(var(--gunit) * 6) var(--cglow),
+      0 0 calc(var(--gunit) * 7) var(--cglow);
+    animation: glow 0.08s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow:
+      0 0 calc(var(--gunit)) var(--cpromotext),
+      0 0 calc(var(--gunit) * 2) var(--cpromotext),
+      0 0 calc(var(--gunit) * 3) var(--cglow),
+      0 0 calc(var(--gunit) * 4) var(--cglow),
+      0 0 calc(var(--gunit) * 5) var(--cglow),
+      0 0 calc(var(--gunit) * 6) var(--cglow),
+      0 0 calc(var(--gunit) * 7) var(--cglow);
+    }
+    to {
+      text-shadow:
+      0 0 calc(var(--gunit) * 2) var(--cpromotext),
+      0 0 calc(var(--gunit) * 4) var(--cpromotext),
+      0 0 calc(var(--gunit) * 6) var(--cglow),
+      0 0 calc(var(--gunit) * 8) var(--cglow),
+      0 0 calc(var(--gunit) * 10) var(--cglow),
+      0 0 calc(var(--gunit) * 12) var(--cglow),
+      0 0 calc(var(--gunit) * 14) var(--cglow);
+    }
+  }
+   

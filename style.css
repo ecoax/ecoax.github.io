@@ -1,0 +1,236 @@
+
+@font-face { font-family: "bold"; src: url("/BraahOne-Regular.ttf") format("truetype"); }
+
+@font-face { font-family: "regular"; src: url("/RedditSans-Regular.ttf") format("truetype"); }
+
+@font-face { font-family: "light"; src: url("/RedditSans-Light.ttf") format("truetype"); }
+
+@font-face { font-family: "extralight"; src: url("/RedditSans-ExtraLight.ttf") format("truetype"); }
+
+:root{
+  --cv0: #652aa5;
+  --cv1: hsl(269, 59%, 87%);
+  --cg0: #2aa565;
+  --cg2: hsl(149, 59%, 33%);
+  --cg1: hsl(149, 59%, 87%);
+  --co0: #a5652a;
+  --co1: hsl(29, 59%, 87%);
+  --co2: #ffb931;
+  --edge: 0.1em; /* for gradient edges to simulate static glow */
+  --unit: calc(100vw / 50);
+  --iconside: calc(var(--svgunit) * 24);
+}
+
+* { margin: 0; padding: 0; word-wrap: break-word; }
+
+/* body {background: var(--cg1);} */
+
+.description { font-family: "light"; }
+.promo { font-family: "regular"; }
+.logo { font-family: "bold"; }
+.slogan { font-family: "regular"; }
+.extra { font-family: "bold"; }
+.info { font-family: "regular"; }
+.footer { font-family: "extralight"; }
+
+
+
+/* prepare description */
+.description {
+  background: linear-gradient(0deg , var(--co1) 0% , var(--cv0) var(--edge));
+  color: var(--cg1);
+  text-align: center;
+}
+
+/* prepare structure for logo*/
+.logo { padding: calc(var(--svgunit) * 1.5) 0;}
+.logo .icon {position: absolute;}
+.logo .text-1 {position:absolute; color: #2aa565;line-height: 0;}
+.logo .text-2 {position: absolute;color: #2aa565;line-height: 0;}
+
+/* prepare promo */
+.promo {
+  background: linear-gradient(180deg, var(--co1), var(--cg0) var(--edge), var(--cv0));
+  color: var(--co2);
+  text-align: center;
+}
+.promo:not(:empty) {padding: 1em calc(var(--svgunit) * 3);}
+
+.slogan {
+  background-color: var(--cv0);
+  background: linear-gradient(0deg , var(--co1) 0% , var(--cv0) var(--edge));
+  color: var(--cg1);
+  text-align: center;
+  padding-bottom: 1em;
+  margin-bottom: 2em ;
+}
+
+.extra {
+  background: linear-gradient(0deg,
+  var(--co1),
+  var(--cg0) var(--edge),
+  var(--cg0) calc(100% -  var(--edge)),
+  var(--co1)
+  );
+  color: var(--cg1);
+  padding: 1em 0.25em 0.5em;
+}
+.info {
+  color: var(--cg2);
+}
+
+.info > div:not(.extra) {
+  padding: 0.25em 0.5em 2em;
+  margin-bottom: 2em;
+}
+
+.footer{
+  overflow: hidden;
+  background: linear-gradient(180deg , var(--co1) 0% , var(--cv0) var(--edge));
+  color: var(--cg1);
+}
+
+.footer div:nth-child(1) {
+  float: left;
+  padding-right: 1em;
+  padding-left: 0.25em;
+}
+
+.footer div:nth-child(2) {
+  float: right;
+  padding-right: 0.25em;
+  padding-left: 1em;
+}
+
+/*the size of the fonts depends on the size of the screen*/
+/* portrait mobile */
+@media screen and (max-aspect-ratio: 1/1) {
+  :root{
+    --svgunit: calc(var(--unit));
+    --iconside: calc(var(--svgunit) * 24);
+  }
+
+  .description { font-size: calc(100vw / 36 * 1.76); }
+  
+  .logo { height: var(--iconside); }
+  .logo .icon { width: var(--iconside); height: auto;}
+  .logo .text-1 {
+    left: calc(var(--svgunit) * 20.0);
+    font-size: calc(var(--svgunit) * 8 * 1.06);
+    margin-top: calc(var(--iconside) / 2 + var(--svgunit) * 0.20);
+  }
+  .logo .text-2 {
+    left: calc(var(--svgunit) * 15.8);
+    font-size: calc(var(--svgunit) * 5.5 * 0.55); 
+    margin-top: calc(var(--iconside) - var(--svgunit) * 5);
+  }
+
+  .promo {
+    font-size: calc(var(--svgunit) * 2.79);
+  }
+
+  .slogan { font-size: calc(100vw / 36 * 1.76); }
+  .slogan > div:nth-child(1) { text-align: left; padding-left: calc(var(--svgunit) * 3);}
+  .slogan > div:nth-child(2) { text-align: right; padding-right: calc(var(--svgunit) * 3);}
+
+  .info{ font-size: calc(100vw / 36 * 1.76); }
+
+  .footer {
+    font-size: calc(100vw / 52 * 1.76); 
+    min-height: calc(100vw / 36 * 1.76);
+    align-content:end;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+}
+
+@media screen and (min-aspect-ratio: 1/1) {
+  :root{
+    --scaler: calc(1 / 3);
+    --svgunit: calc(var(--unit) * var(--scaler));
+    --iconside: calc(var(--svgunit) * 24);
+  }
+  
+  .description { font-size: calc(100vw / 36 * 1.76 * var(--scaler)); }
+  .footer {
+    font-size: calc(100vw / 52 * 1.76 * var(--scaler)); 
+    min-height: calc(100vw / 36 * 1.76 * var(--scaler));
+    align-content:end;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .logo { height: var(--iconside); }
+  .logo .icon { width: var(--iconside); height: auto;}
+  .logo .text-1 {
+    left: calc(var(--svgunit) * 20.0);
+    font-size: calc(var(--svgunit) * 8 * 1.06);
+    margin-top: calc(var(--iconside) / 1.94);
+  }
+  .logo .text-2 {
+    left: calc(var(--svgunit) * 15.8);
+    font-size: calc(var(--svgunit) * 5.5 * 0.55); 
+    margin-top: calc(var(--iconside)/ 1.26);
+  }
+
+  .promo {
+    font-size: calc(var(--svgunit) * 2.79);
+    background: linear-gradient(0deg,
+      var(--co1),
+      var(--cg0) var(--edge),
+      var(--cv0) calc(100% -  var(--edge)),
+      var(--co1)
+    );
+  }
+
+  .slogan {
+    font-family: "bold";
+    text-transform: uppercase;
+    line-height: 0;
+    font-size: calc(var(--svgunit) * 6);
+    background: none;
+    color: var(--cv0);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 0.25em;
+    width: calc(100% / 30 * 20 - 0.25em);
+  }
+  .slogan > div:nth-child(1) { text-align: left; padding-top: calc(var(--iconside) /2.1);}
+  .slogan > div:nth-child(2) { text-align: right; padding-top: calc(var(--iconside) /2);}
+  
+  .info{ font-size: calc(100vw / 36 * 1.76 * var(--scaler)); }
+
+  .footer {
+    font-size: calc(100vw / 36 * 1.76 * var(--scaler)); 
+    min-height: calc(100vw / 36 * 1.76 * var(--scaler));
+    align-content:end;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+}
+
+ul {
+  list-style: none;
+  padding-left: calc(var(--svgunit) * 2);
+  margin: calc(var(--svgunit) * 2) 0;
+}
+li {
+  position: relative; 
+  padding-left: calc(var(--svgunit) * 2);
+  margin: calc(var(--svgunit)) 0;
+}
+li::before {
+  content: '';
+  position: absolute;
+  background-image: url('marker.svg');
+  background-size: calc(var(--svgunit) * 2) calc(var(--svgunit) * 2);/*canvas*/
+  background-repeat: no-repeat; /* once only */
+  width: calc(var(--svgunit) * 2); /* marker */
+  height: calc(var(--svgunit) * 2); /* marker */
+  top: calc(var(--svgunit) / 2); /* center y*/
+  left: calc(var(--svgunit) * -1.4); /* move left from the text */
+}
